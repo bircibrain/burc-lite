@@ -187,4 +187,5 @@ mv /tmp/tmp.bashrc /etc/bash.bashrc
 
 # USER
 RUN useradd --create-home -s /bin/bash birc
-USER birc
+# testing for docker hub
+# USER birc
