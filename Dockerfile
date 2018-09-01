@@ -58,8 +58,8 @@ libjpeg62 xvfb libglu1-mesa-dev libglw1-mesa libxm4 libnlopt0 && \
 	tcsh @update.afni.binaries -package linux_ubuntu_16_64  \
 	-do_extras -bindir /usr/local/afni
 ENV PATH /usr/local/afni:${PATH}
-RUN curl https://afni.nimh.nih.gov/pub/dist/src/scripts_src/@add_rcran_ubuntu.tcsh |tcsh && \
-	rPkgsInstall -pkgs ALL
+# RUN curl https://afni.nimh.nih.gov/pub/dist/src/scripts_src/@add_rcran_ubuntu.tcsh |tcsh && \
+# 	rPkgsInstall -pkgs ALL
 
 ## FSL
 # WORKDIR $DOWNLOADS
