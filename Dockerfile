@@ -62,32 +62,32 @@ RUN curl https://afni.nimh.nih.gov/pub/dist/src/scripts_src/@add_rcran_ubuntu.tc
 	rPkgsInstall -pkgs ALL
 
 ## FSL
-WORKDIR $DOWNLOADS
-ENV FSLDIR /usr/local/fsl
-
-RUN curl -O https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py && \
-	chmod 755 fslinstaller.py && \
-	./fslinstaller.py -d ${FSLDIR} -q
-
-ENV MATLABPATH "${FSLDIR}/etc/matlab/:${MATLABPATH}"
-
-RUN curl -O https://fsl.fmrib.ox.ac.uk/fsldownloads/patches/eddy-patch-fsl-5.0.11/centos6/eddy_cuda8.0 && \
-	chmod 755 eddy_cuda8.0 && \
-	mv eddy_cuda8.0 ${FSLDIR}/bin && \
-	mv ${FSLDIR}/bin/eddy_cuda ${FSLDIR}/bin/eddy_cuda7.0 && \
-	ln -s ${FSLDIR}/bin/eddy_cuda8.0 ${FSLDIR}/bin/eddy_cuda
-
-ENV PATH "${PATH}:${FSLDIR}/bin"
-RUN . ${FSLDIR}/etc/fslconf/fsl.sh
-RUN ${FSLDIR}/etc/fslconf/fslpython_install.sh
+# WORKDIR $DOWNLOADS
+# ENV FSLDIR /usr/local/fsl
+#
+# RUN curl -O https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py && \
+# 	chmod 755 fslinstaller.py && \
+# 	./fslinstaller.py -d ${FSLDIR} -q
+#
+# ENV MATLABPATH "${FSLDIR}/etc/matlab/:${MATLABPATH}"
+#
+# RUN curl -O https://fsl.fmrib.ox.ac.uk/fsldownloads/patches/eddy-patch-fsl-5.0.11/centos6/eddy_cuda8.0 && \
+# 	chmod 755 eddy_cuda8.0 && \
+# 	mv eddy_cuda8.0 ${FSLDIR}/bin && \
+# 	mv ${FSLDIR}/bin/eddy_cuda ${FSLDIR}/bin/eddy_cuda7.0 && \
+# 	ln -s ${FSLDIR}/bin/eddy_cuda8.0 ${FSLDIR}/bin/eddy_cuda
+#
+# ENV PATH "${PATH}:${FSLDIR}/bin"
+# RUN . ${FSLDIR}/etc/fslconf/fsl.sh
+# RUN ${FSLDIR}/etc/fslconf/fslpython_install.sh
 
 ### eddy qc
-WORKDIR $DOWNLOADS
-RUN git clone https://git.fmrib.ox.ac.uk/matteob/eddy_qc_release.git && \
-	cd eddy_qc_release && \
-	fslpython setup.py install
-
-ENV PATH "${PATH}:/usr/local/fsl/fslpython/envs/fslpython/bin"
+# WORKDIR $DOWNLOADS
+# RUN git clone https://git.fmrib.ox.ac.uk/matteob/eddy_qc_release.git && \
+# 	cd eddy_qc_release && \
+# 	fslpython setup.py install
+#
+# ENV PATH "${PATH}:/usr/local/fsl/fslpython/envs/fslpython/bin"
 
 
 # Python
@@ -98,7 +98,7 @@ RUN curl -O https://repo.continuum.io/archive/Anaconda2-5.0.1-Linux-x86_64.sh &&
 ENV PATH "/usr/local/anaconda2/bin:${PATH}"
 
 ### DICOM tools
-RUN conda install --channel conda-forge -y nibabel pystan nipype pydicom
+RUN conda install --channel conda-forge -y nibabel nipype pydicom
 RUN pip install git+https://github.com/moloney/dcmstack.git
 RUN pip install https://github.com/nipy/heudiconv/archive/master.zip
 RUN pip install https://github.com/cbedetti/Dcm2Bids/archive/master.zip
@@ -106,21 +106,21 @@ RUN pip install https://github.com/cbedetti/Dcm2Bids/archive/master.zip
 RUN git clone https://github.com/jmtyszka/bidskit.git && mv bidskit /usr/local/
 ENV PATH "${PATH}":/usr/local/bidskit
 
-RUN conda create --channel conda-forge -y -n python3 python=3.6 anaconda nibabel pystan nipype pydicom
-RUN conda create -y -n poldrack python=3.6
+# RUN conda create --channel conda-forge -y -n python3 python=3.6 anaconda nibabel nipype pydicom
+# RUN conda create -y -n poldrack python=3.6
 
 ## mriqc
 SHELL ["/bin/bash", "-c"]
 
-RUN source activate poldrack && \
-	pip install -r https://raw.githubusercontent.com/poldracklab/mriqc/master/requirements.txt && \
-	pip install git+https://github.com/poldracklab/mriqc.git
-RUN source deactivate
-
-## fmriprep
-RUN source activate poldrack && \
-	pip install fmriprep pydicom
-RUN source deactivate
+# RUN source activate poldrack && \
+# 	pip install -r https://raw.githubusercontent.com/poldracklab/mriqc/master/requirements.txt && \
+# 	pip install git+https://github.com/poldracklab/mriqc.git
+# RUN source deactivate
+#
+# ## fmriprep
+# RUN source activate poldrack && \
+# 	pip install fmriprep pydicom
+# RUN source deactivate
 
 
 # JAVA
