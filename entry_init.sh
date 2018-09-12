@@ -1,9 +1,9 @@
 #!/bin/bash
 #entrypoint pre-initialization
 source /environment
-export FSLDIR=/usr/local/fsl
+#export FSLDIR=/usr/local/fsl
 
-source ${FSLDIR}/etc/fslconf/fsl.sh
+#source ${FSLDIR}/etc/fslconf/fsl.sh
 
 export TMPDIR=/tmp
 export JOBLIB_TEMP_FOLDER=$TMPDIR
