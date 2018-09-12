@@ -177,12 +177,12 @@ RUN echo "Welcome to the BURC!\nDocumentation is available at \n*http://birc-int
 
 
 # tcsh/csh  prompt
-#RUN cat /etc/csh.cshrc | sed -e 's/prompt.*/prompt = "[%n@%m(burc-lite):%c]%# "/' > /tmp/tmp.cshrc && \
-#mv /tmp/tmp.cshrc /etc/csh.cshrc
+RUN cat /etc/csh.cshrc | sed -e 's/prompt.*=.*/prompt = "[%n@%m(burc-lite):%c]%# "/' > /tmp/tmp.cshrc && \
+mv /tmp/tmp.cshrc /etc/csh.cshrc
 
 # bash prompt
-#RUN cat /etc/bash.bashrc | sed -e "s/PS1=.*/PS1='\${debian_chroot:+(\$debian_chroot)}\\\u@\\\h(burc-lite):\\\w\\\\$ '/" > /tmp/tmp.bashrc && \
-#mv /tmp/tmp.bashrc /etc/bash.bashrc
+RUN cat /etc/bash.bashrc | sed -e "s/PS1=.*/PS1='\${debian_chroot:+(\$debian_chroot)}\\\u@\\\h(burc-lite):\\\w\\\\$ '/" > /tmp/tmp.bashrc && \
+mv /tmp/tmp.bashrc /etc/bash.bashrc
 
 
 # USER
