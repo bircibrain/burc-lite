@@ -189,3 +189,5 @@ mv /tmp/tmp.bashrc /etc/bash.bashrc
 RUN useradd --create-home -s /bin/bash birc
 # testing for docker hub
 # USER birc
+
+conda install pyqt=4
