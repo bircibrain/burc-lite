@@ -190,4 +190,4 @@ RUN useradd --create-home -s /bin/bash birc
 # testing for docker hub
 # USER birc
 
-conda install -y pyqt=4
+RUN conda install -y pyqt=4
